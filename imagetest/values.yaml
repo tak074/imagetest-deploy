@@ -1,0 +1,35 @@
+# Default values for template-node-typescript.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+global: {}
+replicaCount: 1
+logLevel: "debug"
+image:
+  repository: image-registry.openshift-image-registry.svc:5000/image6/imagetest
+  tag: 0.0.1
+  pullPolicy: IfNotPresent
+  port: 3000
+nameOverride: imagetest
+fullnameOverride: imagetest
+service:
+  type: ClusterIP
+  port: 80
+route:
+  enabled: true
+ingress:
+  enabled: false
+  appid:
+    enabled: false
+    # web or app - https://cloud.ibm.com/docs/services/appid?topic=appid-kube-auth
+    requestType: web
+    #  host: hello
+  namespaceInHost: true
+  subdomain: containers.appdomain.cloud
+  path: "/"
+#  tlsSecretName: ""
+vcsInfo:
+  repoUrl: https://github.com/tak074/imagetest.git
+  branch: 48412d211d696efd5810d5940881d5cb7afb73b7
+partOf: ""
+connectsTo: ""
+runtime: js
